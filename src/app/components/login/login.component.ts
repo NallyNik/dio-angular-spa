@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +7,9 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  constructor(private service: LoginService) {}
 
+  login() {
+    this.service.doLogin();
+  }
 }
-
