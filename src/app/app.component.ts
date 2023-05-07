@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dio-angular-spa';
+
+  theme: string = 'light';
+  switchTheme() {
+    if (this.theme === 'light') {
+      this.theme = 'dark';
+    } else {
+      this.theme = 'light';
+    }
+  }
 }

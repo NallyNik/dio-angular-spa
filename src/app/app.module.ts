@@ -11,6 +11,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LogoutComponent } from './components/logout/logout.component';
+import { SpaButtonComponent } from './components/spa-button/spa-button.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     HomeComponent,
     TodolistComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    SpaButtonComponent
   ],
   imports: [
     BrowserModule,

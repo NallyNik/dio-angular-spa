@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: var(--color-primary);
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  height: 100vh;
+}
+
+.light {
+  --color-primary: darkblue;
+  --color-secondary: blue;
+  --bg-primary: linear-gradient(white,lightblue);
+  --bg-secondary: linear-gradient(lightblue,rgba(238, 255, 0, 0.295));
+}
+.dark {
+  --color-primary: white;
+  --color-secondary: lightblue;
+  --bg-primary: linear-gradient(rgb(12, 84, 238),rgb(33, 5, 110));
+  --bg-secondary: linear-gradient(rgb(33, 5, 110),rgba(238, 83, 12, 0.425));
+}

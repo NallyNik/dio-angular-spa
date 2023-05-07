@@ -1,3 +1,5 @@
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+<div class="app__container" [ngClass]="theme">
+  <mat-slide-toggle (change)="switchTheme()">Toggle me!</mat-slide-toggle>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>
