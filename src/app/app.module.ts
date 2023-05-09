@@ -12,6 +12,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { SpaButtonComponent } from './components/spa-button/spa-button.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { ChecklistComponent } from './components/checklist/checklist.component';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -21,6 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CardComponent } from './components/card/card.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     LogoutComponent,
     SpaButtonComponent,
     ChipsComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    ChecklistComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

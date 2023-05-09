@@ -1,17 +1,17 @@
 <mat-form-field class="chips__container" appearance="fill">
-  <mat-label>Favorite Fruits</mat-label>
-  <mat-chip-grid class="mat-mdc-chip-set-stacked" #chipGrid aria-label="Enter fruits">
-    <mat-chip-row *ngFor="let fruit of fruits"
-                  (removed)="remove(fruit)"
+  <mat-label>Be grateful for</mat-label>
+  <mat-chip-grid class="mat-mdc-chip-set-stacked" #chipGrid aria-label="Enter gratitude">
+    <mat-chip-row *ngFor="let g of gratitude"
+                  (removed)="remove(g)"
                   [editable]="true"
-                  (edited)="edit(fruit, $event)"
-                  [aria-description]="'press enter to edit ' + fruit.name">
-      {{fruit.name}}
-      <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+                  (edited)="edit(g, $event)"
+                  [aria-description]="'press enter to edit ' + g.name">
+      {{g.name}}
+      <button matChipRemove [attr.aria-label]="'remove ' + g.name">
         <mat-icon>cancel</mat-icon>
       </button>
     </mat-chip-row>
-    <input placeholder="New fruit..."
+    <input placeholder="New gratitude..."
            [matChipInputFor]="chipGrid"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"

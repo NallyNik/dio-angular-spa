@@ -1,0 +1,14 @@
+<div class="checklist__container">
+  <div *ngFor="let checkbox of checkboxes">
+    <label>
+      <input type="checkbox">
+      {{checkbox}}
+    </label>
+  </div>
+
+  <div>
+    <input type="text" name="new" [(ngModel)]="checkboxItem">
+    <app-spa-button buttonText="Add new" (click)="addNew()"></app-spa-button>
+  </div>
+</div>
+

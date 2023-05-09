@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import * as moment from 'moment';
 
 /** @title Datepicker with filter validation */
 @Component({
@@ -7,8 +8,8 @@ import {Component} from '@angular/core';
 })
 export class DatepickerComponent {
   myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
-    return day !== 0 && day !== 6;
+    const currentDate = moment(new Date());
+    const selectedDate = moment(d);
+    return selectedDate.isSameOrAfter(currentDate);
   };
 }
