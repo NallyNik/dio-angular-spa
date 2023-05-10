@@ -1,0 +1,24 @@
+.checklist__container {
+  margin-top: 1rem;
+}
+input {
+  padding: .5rem;
+
+  background-color: var(--bg-tertiary);
+  border-radius: .3rem .3rem 0 0;
+  border: none;
+  border-bottom: .1px solid var(--color-primary);
+
+  &:hover {
+    background-color: var(--bg-tertiary-hover);
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid var(--acent);
+  }
+}
+.add-new {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}

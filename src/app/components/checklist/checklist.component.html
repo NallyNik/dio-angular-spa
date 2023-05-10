@@ -6,9 +6,9 @@
     </label>
   </div>
 
-  <div>
-    <input type="text" name="new" [(ngModel)]="checkboxItem">
-    <app-spa-button buttonText="Add new" (click)="addNew()"></app-spa-button>
+  <div class="add-new">
+    <input type="text" name="new" [(ngModel)]="checkboxItem" (keyup.enter)="addNew()" placeholder="Add new checkbox">
+    <app-spa-button buttonText="+" (click)="addNew()" aria-label="Add new checkbox"></app-spa-button>
   </div>
 </div>
 

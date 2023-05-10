@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@include mat.core();
+
 * {
   margin: 0;
   padding: 0;
@@ -11,15 +18,40 @@ body {
   height: 100vh;
 }
 
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$pink-palette),
+  )
+));
+
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$pink-palette),
+    accent: mat.define-palette(mat.$indigo-palette),
+  ),
+));
+
 .light {
-  --color-primary: darkblue;
-  --color-secondary: blue;
-  --bg-primary: linear-gradient(white,lightblue);
-  --bg-secondary: linear-gradient(lightblue,rgba(238, 255, 0, 0.295));
+  --acent: blue;
+  --color-primary: rgb(39, 39, 39);
+  --color-secondary: rgb(33, 5, 110);
+  --bg-primary: linear-gradient(rgb(93, 198, 233), lightblue, white);
+  --bg-secondary: linear-gradient( lightblue, white);
+  --bg-tertiary:rgb(247, 246, 246);
+  --bg-tertiary-hover: #ececec;
+
+  @include mat.all-component-themes($light-theme);
 }
 .dark {
+  --acent: rgb(219, 59, 85);
   --color-primary: white;
   --color-secondary: lightblue;
-  --bg-primary: linear-gradient(rgb(12, 84, 238),rgb(33, 5, 110));
-  --bg-secondary: linear-gradient(rgb(33, 5, 110),rgba(238, 83, 12, 0.425));
+  --bg-primary: linear-gradient(rgb(20, 2, 68), rgb(33, 5, 110), rgb(39, 39, 39));
+  --bg-secondary: linear-gradient(rgb(33, 5, 110),rgb(39, 39, 39));
+  --bg-tertiary: #4d4d4d;
+  --bg-tertiary-hover: #575757;
+
+  @include mat.all-component-themes($dark-theme);
 }

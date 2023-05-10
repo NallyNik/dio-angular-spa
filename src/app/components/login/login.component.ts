@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,10 +8,10 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private service: LoginService) {}
-
   email: FormControl = new FormControl('', [Validators.required, Validators.email]);
   hide: boolean = true;
+
+  constructor(private service: LoginService) {}
 
   //email validation
   getErrorMessage() {
@@ -23,6 +23,8 @@ export class LoginComponent {
 
   //button
   login(): void {
-    this.service.doLogin();
+    if (this.email.valid) {
+      this.service.doLogin();
+    }
   }
 }

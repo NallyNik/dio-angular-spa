@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./spa-button.component.scss']
 })
 export class SpaButtonComponent {
-  @Input()
-  buttonText: string = '';
+  @Input() buttonText: string = '';
+
+  constructor() {}
 
 }
