@@ -9,11 +9,17 @@ export class ChecklistComponent implements OnInit {
   checkboxItem: string = '';
   checkboxes: string[] = [];
 
-   constructor(private checkboxService: CheckboxService) { }
+   constructor(private checkboxService: CheckboxService) {
+     this.checkboxService.recover();
+    }
 
   addNew () {
     this.checkboxService.addCheckbox(this.checkboxItem);
+    this.checkboxService.save(this.checkboxes);
     this.checkboxItem = '';
+  }
+  remove () {
+    this.checkboxService.removeCheckbox(this.checkboxItem);
   }
 
   ngOnInit() {

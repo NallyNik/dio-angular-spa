@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CheckboxService {
-  checkboxes: string[] = [];
+  checkboxes: string[] = ['Sugar', 'Milk', 'Eggs'];
 
    addCheckbox(checkboxItem: string) {
     if (checkboxItem && !this.checkboxes.includes(checkboxItem)) {
@@ -15,7 +15,17 @@ export class CheckboxService {
     return this.checkboxes;
   }
 
-  removeCheckbox(index: number) {
-    this.checkboxes.splice(index, 1);
+  removeCheckbox(checkbox: string) {
+    this.checkboxes.splice(this.checkboxes.indexOf(checkbox), 1);
+  }
+
+  save (checkboxes: string[]) {
+    localStorage.setItem('checkboxes', JSON.stringify(checkboxes));
+  }
+  recover () {
+    var savedCheckboxes = localStorage.getItem('checkboxes');
+    if (savedCheckboxes) {
+      this.checkboxes = JSON.parse(savedCheckboxes);
+    }
   }
 }

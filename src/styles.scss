@@ -1,8 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
 
 @include mat.core();
 
@@ -28,13 +26,13 @@ $light-theme: mat.define-light-theme((
 
 $dark-theme: mat.define-dark-theme((
   color: (
-    primary: mat.define-palette(mat.$pink-palette),
-    accent: mat.define-palette(mat.$indigo-palette),
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$pink-palette),
   ),
 ));
 
 .light {
-  --acent: blue;
+  --accent: blue;
   --color-primary: rgb(39, 39, 39);
   --color-secondary: rgb(33, 5, 110);
   --bg-primary: linear-gradient(rgb(93, 198, 233), lightblue, white);
@@ -45,7 +43,7 @@ $dark-theme: mat.define-dark-theme((
   @include mat.all-component-themes($light-theme);
 }
 .dark {
-  --acent: rgb(219, 59, 85);
+  --accent: blue;
   --color-primary: white;
   --color-secondary: lightblue;
   --bg-primary: linear-gradient(rgb(20, 2, 68), rgb(33, 5, 110), rgb(39, 39, 39));

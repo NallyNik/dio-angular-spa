@@ -19,21 +19,26 @@ export class ChipsComponent {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   gratitude: grateful[] = [{name: 'Health'}, {name: 'Food'}, {name: 'Home'}];
 
+  constructor() {
+    var savedData = localStorage.getItem('gratitude');
+    if (savedData) {
+      this.gratitude = JSON.parse(savedData);
+    }
+  }
+
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-
     // Add our grateful
     if (value) {
       this.gratitude.push({name: value});
+      localStorage.setItem('gratitude', JSON.stringify(this.gratitude));
     }
-
     // Clear the input value
     event.chipInput!.clear();
   }
 
   remove(grateful: grateful): void {
     const index = this.gratitude.indexOf(grateful);
-
     if (index >= 0) {
       this.gratitude.splice(index, 1);
     }
@@ -41,7 +46,6 @@ export class ChipsComponent {
 
   edit(grateful: grateful, event: MatChipEditedEvent) {
     const value = event.value.trim();
-
     // Remove grateful if it no longer has a name
     if (!value) {
       this.remove(grateful);

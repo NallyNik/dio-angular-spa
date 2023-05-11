@@ -6,7 +6,7 @@
                   [editable]="true"
                   (edited)="edit(g, $event)"
                   [aria-description]="'press enter to edit ' + g.name">
-      {{g.name}}
+      {{g.name | titlecase}}
       <button matChipRemove [attr.aria-label]="'remove ' + g.name">
         <mat-icon>cancel</mat-icon>
       </button>

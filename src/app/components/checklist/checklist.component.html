@@ -1,14 +1,14 @@
 <div class="checklist__container">
-  <div *ngFor="let checkbox of checkboxes">
+  <div *ngFor="let checkbox of checkboxes" class="checklist-item">
     <label>
       <input type="checkbox">
-      {{checkbox}}
+      <p>{{checkbox | titlecase}}</p>
     </label>
+    <button (click)="remove()" aria-label="Remove checkbox item" title="Remove">X</button>
   </div>
 
   <div class="add-new">
-    <input type="text" name="new" [(ngModel)]="checkboxItem" (keyup.enter)="addNew()" placeholder="Add new checkbox">
-    <app-spa-button buttonText="+" (click)="addNew()" aria-label="Add new checkbox"></app-spa-button>
+    <input type="text" name="new" [(ngModel)]="checkboxItem" (keyup.enter)="addNew()" placeholder="Add new item" aria-description="Press enter to add item">
   </div>
 </div>
 
