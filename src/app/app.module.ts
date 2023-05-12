@@ -14,6 +14,7 @@ import { ChipsComponent } from './components/chips/chips.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { CardComponent } from './components/card/card.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -24,6 +25,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import { MenuComponent } from './components/menu/menu.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     ChipsComponent,
     ChecklistComponent,
     CardComponent,
-    CalendarComponent
+    CalendarComponent,
+    DatepickerComponent,
+    MenuComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

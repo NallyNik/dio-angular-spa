@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent {
   email: FormControl = new FormControl('', [Validators.required, Validators.email]);
+  password: FormControl = new FormControl('', [Validators.required]);
   hide: boolean = true;
 
   constructor(private service: LoginService) {}
@@ -23,7 +24,7 @@ export class LoginComponent {
 
   //button
   login(): void {
-    if (this.email.valid) {
+    if (this.email.valid && this.password.valid) {
       this.service.doLogin();
     }
   }

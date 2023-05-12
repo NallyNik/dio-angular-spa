@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent {
+
   constructor(private service: LoginService) {}
   logout() {
     this.service.doLogout();
