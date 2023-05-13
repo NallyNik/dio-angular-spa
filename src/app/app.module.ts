@@ -13,8 +13,6 @@ import { SpaButtonComponent } from './components/spa-button/spa-button.component
 import { ChipsComponent } from './components/chips/chips.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { CardComponent } from './components/card/card.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -40,8 +38,6 @@ import { TasksComponent } from './components/tasks/tasks.component';
     ChipsComponent,
     ChecklistComponent,
     CardComponent,
-    CalendarComponent,
-    DatepickerComponent,
     MenuComponent,
     TasksComponent
   ],

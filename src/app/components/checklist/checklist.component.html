@@ -1,10 +1,10 @@
 <div class="checklist__container">
-  <div *ngFor="let checkbox of checkboxes" class="checklist-item">
+  <div *ngFor="let checkbox of checkboxes; let i = index" class="checklist-item">
     <label>
-      <input type="checkbox">
-      <p>{{checkbox | titlecase}}</p>
+      <input type="checkbox" name="{{checkbox.name}}" [(ngModel)]="checkbox.checked" (change)="updateLocalStorage()">
+      <p>{{checkbox.name | titlecase}}</p>
     </label>
-    <button (click)="remove()" aria-label="Remove checkbox item" title="Remove">X</button>
+    <button (click)="remove(i)" aria-label="Remove checkbox item" title="Remove">X</button>
   </div>
 
   <div class="add-new">

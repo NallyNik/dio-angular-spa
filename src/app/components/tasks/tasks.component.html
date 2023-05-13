@@ -1,0 +1,37 @@
+<div class="tasks__container">
+  <div class="add-tasks">
+    <h1>New list</h1>
+
+    <input type="text" [(ngModel)]="listTitle" placeholder="List name"/>
+
+    <ul>
+      <li *ngFor="let item of listItems; let i = index">
+        {{ item.name }}
+        <button (click)="removeItem(i)">Remove</button>
+      </li>
+    </ul>
+
+    <div class="new-item">
+      <input type="text" [(ngModel)]="newItem" (keyup.enter)="addNew()" placeholder="Add new item">
+
+      <button (click)="addNew()">Add Item</button>
+    </div>
+
+    <app-spa-button buttonText="Save list" (click)="setValue()"></app-spa-button>
+  </div>
+
+
+  <div *ngFor="let key of keys; let i = index" class="tasks-list">
+    <h2>{{ key | titlecase }}</h2>
+
+    <div *ngFor="let value of checklistService.getTasks(key)">
+      <label>
+        <input type="checkbox" name="{{value.name}}" [(ngModel)]="value.checked" (change)="updateLocalStorage()"/>
+        <p>{{ value.name | titlecase }}</p>
+      </label>
+    </div>
+
+    <app-spa-button buttonText="Remove list" (click)="removeChecklist(i)"></app-spa-button>
+  </div>
+
+</div>
