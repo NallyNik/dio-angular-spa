@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ChecklistService {
-  listItem: { name: string; checked: boolean; }[] = [];
+  listItem: string[] = [];
   keysList: string[] = [];
 
   //Add item to the list
    addListItem (item: string) {
-    if (item && !this.listItem.find(x => x.name === item)) {
-     this.listItem.push({name: item, checked: false})
+    if (item && !this.listItem.includes(item)) {
+     this.listItem.push(item)
     }
    }
 
@@ -23,14 +23,14 @@ export class ChecklistService {
   }
 
   setTask(key: string, value: any): void {
-    if (key && !this.keysList.includes(key)) {
+    if (key && !this.keysList.includes(key) && value) {
       localStorage.setItem(key, JSON.stringify(value));
       this.keysList.push(key);
       localStorage.setItem('keysList', JSON.stringify(this.keysList));
     }
   }
 
-  getTasks(key: string): any {
+  getTasks(key: string) {
     const value = localStorage.getItem(key);
     if (value) {
       return JSON.parse(value);
@@ -42,7 +42,12 @@ export class ChecklistService {
     return this.keysList;
   }
 
-  removeKey(index: number) {
+  removeList (key: string): void {
+    localStorage.removeItem(key);
+  }
+
+  removeKey(index: number): void {
+    this.removeList(this.keysList[index]);
     this.keysList.splice(index, 1);
     localStorage.setItem('keysList', JSON.stringify(this.keysList));
   }
@@ -54,7 +59,4 @@ export class ChecklistService {
     }
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('key', JSON.stringify(this.listItem));
-  }
 }

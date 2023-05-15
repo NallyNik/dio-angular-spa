@@ -6,7 +6,7 @@
 
     <ul>
       <li *ngFor="let item of listItems; let i = index">
-        {{ item.name }}
+        {{ item }}
         <button (click)="removeItem(i)">Remove</button>
       </li>
     </ul>
@@ -26,8 +26,8 @@
 
     <div *ngFor="let value of checklistService.getTasks(key)">
       <label>
-        <input type="checkbox" name="{{value.name}}" [(ngModel)]="value.checked" (change)="updateLocalStorage()"/>
-        <p>{{ value.name | titlecase }}</p>
+        <input type="checkbox" name="{{value}}" />
+        <p>{{ value | titlecase }}</p>
       </label>
     </div>
 

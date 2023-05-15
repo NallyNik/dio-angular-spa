@@ -9,11 +9,9 @@ import { ChecklistService } from '../../services/checklist.service';
 export class TasksComponent implements OnInit {
   newItem: string = '';
   listTitle: string = '';
-  listItems: { name: string; checked: boolean; }[] = [];
+  listItems: string[] = [];
   value: string[] = [];
-
   keys: string[] = [];
-  values: string[] = [];
 
   constructor(public checklistService: ChecklistService) {
     this.checklistService.recover();
@@ -46,13 +44,8 @@ export class TasksComponent implements OnInit {
     this.checklistService.removeKey(i);
   }
 
-  updateLocalStorage(): void {
-    this.checklistService.updateLocalStorage();
-  }
   ngOnInit() {
     this.listItems = this.checklistService.getListItem();
     this.keys = this.checklistService.getkeys();
-
-    this.values = this.keys.map(key => this.checklistService.getTasks(key));
   }
 }
