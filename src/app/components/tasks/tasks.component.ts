@@ -7,13 +7,19 @@ import { ChecklistService } from '../../services/checklist.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  newItem: string = '';
-  listTitle: string = '';
-  listItems: string[] = [];
-  value: string[] = [];
-  keys: string[] = [];
+  newItem: string;
+  listTitle: string;
+  listItems: string[];
+  value: string[];
+  keys: string[];
 
-  constructor(public checklistService: ChecklistService) {
+  constructor(readonly checklistService: ChecklistService) {
+    this.newItem = '';
+    this.listTitle = '';
+    this.listItems = [];
+    this.value = [];
+    this.keys = [];
+
     this.checklistService.recover();
   }
 
@@ -27,17 +33,16 @@ export class TasksComponent implements OnInit {
     this.checklistService.removeListItem(i);
   }
   //Save list to local storage and reset model
-  setValue(): void {
-    this.checklistService.setTask(this.listTitle, this.listItems);
-    this.value = this.checklistService.getTasks(this.listTitle);
-    this.listTitle = '';
-    this.listItems = [];
-  }
-
   getValue(): void {
     if (this.listTitle) {
       this.value = this.checklistService.getTasks(this.listTitle);
     }
+  }
+  setValue(): void {
+    this.checklistService.setTask(this.listTitle, this.listItems);
+    this.getValue();
+    this.listTitle = '';
+    this.listItems = [];
   }
 
   removeChecklist(i: number): void {

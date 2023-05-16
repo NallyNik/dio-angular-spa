@@ -4,30 +4,47 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ChecklistService {
-  listItem: string[] = [];
-  keysList: string[] = [];
+  listItem: string[];
+  keysList: string[];
+
+  constructor() {
+    this.listItem = [];
+    this.keysList = [];
+   }
 
   //Add item to the list
    addListItem (item: string) {
-    if (item && !this.listItem.includes(item)) {
-     this.listItem.push(item)
+    if (!item) {
+      throw new Error('Item cannot be empty');
     }
+    if (this.listItem.includes(item)) {
+      throw new Error('Item already exists');
+    }
+    this.listItem.push(item);
    }
 
    removeListItem(index: number) {
     this.listItem.splice(index, 1);
   }
 
-   getListItem() {
+   getListItem(): string[] {
     return this.listItem;
   }
 
-  setTask(key: string, value: any): void {
-    if (key && !this.keysList.includes(key) && value) {
-      localStorage.setItem(key, JSON.stringify(value));
-      this.keysList.push(key);
-      localStorage.setItem('keysList', JSON.stringify(this.keysList));
+  setTask(key: string, value: string[]): void {
+    if (!key) {
+      throw new Error('Key cannot be empty');
     }
+    if (this.keysList.includes(key)) {
+      throw new Error('Key already exists');
+    }
+    if (!value) {
+      throw new Error('Value cannot be empty');
+    }
+    localStorage.setItem(key, JSON.stringify(value));
+    this.keysList.push(key);
+    localStorage.setItem('keysList', JSON.stringify(this.keysList));
+    this.listItem = [];
   }
 
   getTasks(key: string) {
@@ -38,11 +55,14 @@ export class ChecklistService {
     return null;
   }
 
-  getkeys() {
+  getkeys(): string[] {
     return this.keysList;
   }
 
   removeList (key: string): void {
+    if (!key) {
+      throw new Error('Key cannot be empty');
+    }
     localStorage.removeItem(key);
   }
 
@@ -52,8 +72,8 @@ export class ChecklistService {
     localStorage.setItem('keysList', JSON.stringify(this.keysList));
   }
 
-  recover () {
-    var savedLists = localStorage.getItem('keysList');
+  recover (): void {
+    const savedLists = localStorage.getItem('keysList');
     if (savedLists) {
       this.keysList = JSON.parse(savedLists);
     }

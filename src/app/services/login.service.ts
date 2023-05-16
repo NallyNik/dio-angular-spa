@@ -14,7 +14,7 @@ export class LoginService {
     this.router.navigate(['todolist']);
   }
   doLogout() {
-    localStorage.clear();
+    localStorage.removeItem('token');
     this.router.navigate(['']);
   }
 }
